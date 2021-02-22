@@ -49,7 +49,7 @@ internal sealed class BuildParameters
       IsReleaseBuild = !buildInformation.IsLocalBuild && buildInformation.IsReleaseBuild,
       IsPullRequest = buildInformation.IsPullRequest,
       ShouldPublish = !buildInformation.IsLocalBuild && buildInformation.ShouldPublish,
-      Verbosity = DotNetCoreVerbosity.Quiet,
+      Verbosity = DotNetCoreVerbosity.Normal,
       SonarQubeCredentials = SonarQubeCredentials.GetSonarQubeCredentials(context),
       NuGetCredentials = NuGetCredentials.GetNuGetCredentials(context),
       Projects = BuildProjects.Instance(context, solution),
