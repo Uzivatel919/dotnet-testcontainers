@@ -9,7 +9,12 @@ namespace DotNet.Testcontainers.Clients
     private static readonly ConcurrentDictionary<Uri, IDockerClient> Clients = new ConcurrentDictionary<Uri, IDockerClient>();
 
     protected DockerApiClient(Uri endpoint) : this(
-      Clients.GetOrAdd(endpoint, _ => new DockerClientConfiguration(endpoint).CreateClient()))
+      Clients.GetOrAdd(endpoint, _ =>
+      {
+        var client = new DockerClientConfiguration(endpoint).CreateClient();
+        client.DefaultTimeout = TimeSpan.FromMinutes(5);
+        return client;
+      }))
     {
     }
 
