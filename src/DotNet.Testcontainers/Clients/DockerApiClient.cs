@@ -12,7 +12,7 @@ namespace DotNet.Testcontainers.Clients
       Clients.GetOrAdd(endpoint, _ =>
       {
         var client = new DockerClientConfiguration(endpoint).CreateClient();
-        client.DefaultTimeout = TimeSpan.FromMinutes(5);
+        //client.DefaultTimeout = TimeSpan.FromMinutes(5);
         return client;
       }))
     {
