@@ -11,6 +11,7 @@ namespace DotNet.Testcontainers.Tests.Fixtures.Containers.Modules
     public AlpineFixture()
       : base(new TestcontainersBuilder<TestcontainersContainer>()
         .WithImage("alpine")
+        .WithCommand(KeepTestcontainersUpAndRunning.Command)
         .WithStartupCallback((_ , ct) => Task.Delay(TimeSpan.FromMinutes(1), ct))
         .Build())
     {
